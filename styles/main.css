@@ -1,0 +1,272 @@
+@import url('fonts.css');
+@import url('reset.css');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 768px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    border: 1px solid #cccccc;
+    overflow: hidden;
+}
+
+/* HOME PAGE */
+
+.home {
+    width: 100%;
+    /* box-shadow: 10px 0px 10px #888888; */
+}
+
+.title {
+    height: 208px;
+    text-align: center;
+}
+
+.title > span {
+    font-size: 150px;
+    font-family: 'DIN Condensed Bold';
+    color: #020C39;
+    text-transform: uppercase;
+    line-height: 248px;
+}
+
+.menu__item {
+    height: 204px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+
+.menu__item:hover {
+    opacity: 0.90;
+}
+
+#lotto-game {
+    background-image: url('../images/wave1.png');
+}
+
+#keno-game {
+    background-image: url('../images/wave2.png');
+}
+
+#daily-3-game {
+    background-image: url('../images/wave3.png');
+}
+
+#euro-millions-game {
+    background-image: url('../images/wave4.png');
+}
+
+.menu__logo {
+    width: 327px;
+    height: 100%;
+}
+
+.menu__arrow {
+    background-image: url('../images/Shape.png');
+    background-color: inherit;
+    background-position: center;
+    height: 68px;
+    width: 37px;
+    position: absolute;
+    top: 75px;
+    right: 86px;
+}
+
+/* GAME PAGE */
+
+.game-play {
+    display: none;
+    width: 700px;
+    height: 1024px;
+    background-image: url('../images/Background.png');
+    background-position: right;
+    position: relative;
+}
+
+.game {
+    width: 700px;
+    padding: 36px 34px 50px 55px;
+    color: #FFFFFF;
+}
+
+
+.game__header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.game__slogan {
+    font-size: 150px;
+    height: 100px;
+    font-family: 'DIN Condensed Bold';
+    text-transform: uppercase;
+}
+
+.game__logo {
+    width: 275px;
+    height: 172px;
+}
+
+.game__rules {
+    font-family: 'Avenir Next';
+    font-size: 30px;
+    line-height: 40px;
+    padding-right: 20px;
+}
+
+.game__cost {
+    font-size: 40px;
+    font-family: 'Avenir Next Bold';
+    letter-spacing: 1,2;
+    margin: 20px 0 30px;
+}
+
+.game__line {
+    margin-right: 54px;
+    width: 590px;
+    height: 70px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 7px;
+    position: relative;
+    padding-right: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.game__line::after {
+    content: "";
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #020C39 url('../images/times.svg') no-repeat center;
+    background-size: 75%;
+    position: absolute;
+    top: 13px;
+    right: -22px;
+}
+
+.play-row_numbers {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: space-between;
+    padding: 11px 0;
+}
+
+.play-row__button {
+    width: 126px;
+    height: 50px;
+    line-height: 50px;
+    background-color: initial;
+    font-family: 'Avenir Next Bold';
+    font-size: 22px;
+    color: #020C39;
+    text-align: center;
+    border: 2px solid #020C39;
+    border-radius: 5px;
+}
+
+.cell {
+    width: 50px;
+    height: 50px;
+    font-size: 25px;
+    background-color: #FFFFFF;
+    color: #020C39;
+    border-radius: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cell_active {
+    border: 3px solid #020C39;
+}
+
+.cell_chosen {
+    background-color: #020C39;
+    color: #FFFFFF;
+}
+
+.cell_star {
+    border: 3px solid #020C39;
+    background-color: #FFFFFF;
+    color: #020C39;
+    position: relative;
+}
+
+.cell_star::after {
+    content: url('../images/star.png');
+    position: absolute;
+    height: 26px;
+    width: 26px;
+    top: -13px;
+    right: -13px;
+}
+
+
+.game__board {
+    margin: 55px 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.game__board_big {
+    width: 590px;
+    height: 290px;
+}
+
+.game__board_small {
+    width: 350px;
+    height: 100px;
+    align-items: flex-end;
+    justify-content: flex-start;
+    align-content: flex-end;
+}
+
+.game__nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.btn {
+    width: 126px;
+    height: 50px;
+    font-family: 'Avenir Next';
+    font-size: 24px;
+    outline: 2px solid #FFFFFF;
+    border: none;
+    border-radius: 7px;
+    color: #FFFFFF;
+    background-color: inherit;
+}
+
+.btn_big {
+    width: 225px;
+    background-color: #020C39;
+    color: #FFFFFF;
+    outline: none;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}

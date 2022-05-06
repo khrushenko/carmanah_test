@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carmanah</title>
+    <link rel="stylesheet" href="./styles/main.css">
+</head>
+
+<body>
+    <main class="container">
+        <div class="home">
+            <div class="title">
+                <span>Select game</span>
+            </div>
+            <div class="menu">
+                <!-- TODO: create list of games automatically -->
+                <div class="menu__item" id="lotto-game">
+                    <img class="menu__logo" src="./images/Lotto-Logo.png" alt="">
+                    <div class="menu__arrow"></div>
+                </div>
+                <div class="menu__item" id="keno-game">
+                    <img class="menu__logo" src="./images/Keno-Logo.png" alt="">
+                    <div class="menu__arrow"></div>
+                </div>
+                <div class="menu__item" id="daily-3-game">
+                    <img class="menu__logo" src="./images/Daily-Logo.png" alt="">
+                    <div class="menu__arrow"></div>
+                </div>
+                <div class="menu__item" id="euro-millions-game">
+                    <img class="menu__logo" src="./images/Euro-Millions-Logo.png" alt="">
+                    <div class="menu__arrow"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="game-play">
+            <div class="back-button"></div>
+            <div class="game">
+                <div class="game__header">
+                    <div class="game__slogan">PLAY</div>
+                    <img class="game__logo" src="./images/Euro-Millions-Logo.png" alt="">
+                </div>
+                <div class="game__container">
+                    <div class="game__rules">
+                        Enter 5 numbers from 1-50 and 2 Lucky Stars from 1 - 11. Or select Lucky Dip
+                    </div>
+                    <div class="game__cost">
+                        £2.00 per play
+                    </div>
+                    <div class="game__line">
+                        <div class="play-row__button" id="lucky-dip-button">Lucky Dip</div>
+                        <div class="play-row_numbers">
+                            <div class="cell cell_active"></div>
+                            <div class="cell"></div>
+                            <div class="cell"></div>
+                            <div class="cell"></div>
+                            <div class="cell"></div>
+                            <div class="cell cell_star"></div>
+                            <div class="cell cell_star"></div>
+                        </div>
+                    </div>
+                    <div class="game__board"></div>
+                    <div class="game__nav">
+                        <button class="btn" id="clear-button">Clear</button>
+                        <button class="btn" id="cancel-button">Cancel</button>
+                        <button class="btn btn_big" id="betslip-button">Create Betslip</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="./scripts/main.js"></script>
+</body>
+
+</html>

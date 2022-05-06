@@ -1,0 +1,14 @@
+@font-face {
+    font-family: 'DIN Condensed Bold';
+    src: url('../fonts/DIN_Condensed_Bold.ttf')
+}
+
+@font-face {
+    font-family: 'Avenir Next';
+    src: url('../fonts/Avenir_Next.ttf')
+}
+
+@font-face {
+    font-family: 'Avenir Next Bold';
+    src: url('../fonts/Avenir_Next_Bold.ttf')
+}
