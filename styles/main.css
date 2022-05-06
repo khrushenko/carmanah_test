@@ -161,8 +161,7 @@
     justify-content: space-evenly;
 }
 
-.game__line::after {
-    content: "";
+.play-row__icon {
     width: 44px;
     height: 44px;
     border-radius: 50%;
@@ -173,7 +172,7 @@
     right: -22px;
 }
 
-.play-row_numbers {
+.play-row__numbers {
     display: flex;
     flex-direction: row;
     gap: 10px;

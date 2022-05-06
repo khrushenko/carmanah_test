@@ -9,7 +9,7 @@ const MAX_VALUE = 50;               // maximum value in the selection range for 
 let numbers = [];                   // list of all chosen numbers
 
 const gameBoard = document.querySelector(".game__board");
-const playRowNumbers = document.querySelectorAll(".play-row_numbers > .cell");
+const playRowNumbers = document.querySelectorAll(".play-row__numbers > .cell");
 const container = document.querySelector('.container');
 
 const randomizer = (min, max) => Math.round(min + Math.random() * (max - min));
@@ -148,6 +148,7 @@ document.querySelector('#cancel-button').addEventListener('click', function (eve
 })
 
 document.querySelector('#clear-button').addEventListener('click', resetGame);
+document.querySelector('#clear-icon').addEventListener('click', resetGame);
 
 document.querySelector('#betslip-button').addEventListener('click', function (event) {
     resetGame();
