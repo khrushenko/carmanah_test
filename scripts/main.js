@@ -1,12 +1,12 @@
 'use strict';
 
-const CELLS_NUMBER = 7;
-const STAR_CELLS_NUMBER = 2;
-const MAX_STAR_VALUE = 11;
+const CELLS_NUMBER = 7;             // number of all cells in play row
+const STAR_CELLS_NUMBER = 2;        // number of star cells in play row
+const MAX_STAR_VALUE = 11;          // maximum value in the selection range for lucky star cells
 const NOT_STAR_CELLS_NUMBER = CELLS_NUMBER - STAR_CELLS_NUMBER;
-const MAX_VALUE = 50;
+const MAX_VALUE = 50;               // maximum value in the selection range for cells
 
-let numbers = [];
+let numbers = [];                   // list of all chosen numbers
 
 const gameBoard = document.querySelector(".game__board");
 const playRowNumbers = document.querySelectorAll(".play-row_numbers > .cell");
@@ -22,7 +22,7 @@ function startGame() {
         left: 700,
         behavior: 'smooth'
     });
-    renderBoard();
+    renderGameBoard();
 }
 
 function endGame() {
@@ -36,19 +36,22 @@ function endGame() {
 
 document.querySelector("#euro-millions-game").addEventListener("click", startGame);
 
-function fullGameBoard(k) {
-    for (let i = 0; i < k; i++) {
+// fill a game board with cells with values from 1 to maximum value (k)
+function fillGameBoard(k) {
+    for (let i = 1; i <= k; i++) {
         let cell = document.createElement('div');
         cell.classList.add('cell');
-        cell.textContent = i + 1;
+        cell.textContent = i;
         gameBoard.append(cell);
     }
 }
 
+// remove all cells from  a game board
 function cleanGameBoard() {
     document.querySelector(".game__board").innerHTML = "";
 }
 
+// fill the play row with the chosen numbers from the numbers list
 function renderPlayRow() {
     for (let i = 0, j = 0; j < CELLS_NUMBER; i++, j++) {
         if (numbers[i]) {
@@ -61,34 +64,39 @@ function renderPlayRow() {
             playRowNumbers[j].classList.remove('cell_active', 'cell_chosen');
         }
     }
+    // the first empty cell in the row is always an active cell
     if (numbers.length < CELLS_NUMBER) {
         playRowNumbers[numbers.length].classList.add('cell_active');
     }
 }
 
-function renderBoard() {
+// build and fill the game board according to the value of 
+// the maximum value in the selection range for cells
+function renderGameBoard() {
     cleanGameBoard();
     if (numbers.length < NOT_STAR_CELLS_NUMBER) {
         gameBoard.classList.remove('game__board_small');
         gameBoard.classList.add('game__board_big');
-        fullGameBoard(MAX_VALUE);
-        renderBoard_aux(numbers.slice(0, CELLS_NUMBER));
+        fillGameBoard(MAX_VALUE);
+        paintGameBoard(numbers.slice(0, CELLS_NUMBER));
     }
     else {
         gameBoard.classList.remove('game__board_big');
         gameBoard.classList.add('game__board_small');
-        fullGameBoard(MAX_STAR_VALUE);
-        renderBoard_aux(numbers.slice(NOT_STAR_CELLS_NUMBER));
+        fillGameBoard(MAX_STAR_VALUE);
+        paintGameBoard(numbers.slice(NOT_STAR_CELLS_NUMBER));
     }
 }
 
-function renderBoard_aux(nums) {
+// mark all chosen numbers on the game board
+function paintGameBoard(nums) {
     let boardCells = gameBoard.querySelectorAll('.cell');
     for (let i of nums) {
         boardCells[i - 1].classList.add('cell_chosen');
     }
 }
 
+// select or deselect a number depending on the state of the cell
 function selectNumber(el) {
     if (!el.classList.contains('cell_chosen')) {
         if (numbers.length < CELLS_NUMBER) {
@@ -96,10 +104,12 @@ function selectNumber(el) {
         }
     }
     else {
+        // remove the last occurrence of the selected number in the list of chosen numbers
         numbers.splice(numbers.lastIndexOf(el.textContent), 1);
     }
 }
 
+// add n of random unique numbers between 1 and max inclusively to the numbers list
 function addRandomNumbers(n, max) {
     while (numbers.length < n) {
         let num = randomizer(1, max).toString();
@@ -124,16 +134,16 @@ gameBoard.addEventListener('click', function (event) {
 
 function updateGame() {
     renderPlayRow();
-    renderBoard();
+    renderGameBoard();
 }
 
 function resetGame() {
     numbers = [];
-    updateGame()
+    updateGame();
 }
 
 document.querySelector('#cancel-button').addEventListener('click', function (event) {
-    numbers.pop()
+    numbers.pop();
     updateGame();
 })
 
