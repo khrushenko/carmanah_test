@@ -35,7 +35,7 @@
     text-align: center;
 }
 
-.title > span {
+.title>span {
     font-size: 150px;
     font-family: 'DIN Condensed Bold';
     color: #020C39;
@@ -150,7 +150,6 @@
 .game__cost {
     font-size: 40px;
     font-family: 'Avenir Next Bold';
-    letter-spacing: 1,2;
     margin: 20px 0 30px;
 }
 
@@ -201,6 +200,11 @@
     border-radius: 5px;
 }
 
+.play-row__button:hover {
+    color: #FFFFFF;
+    background-color: #020c39;
+}
+
 .cell {
     width: 50px;
     height: 50px;
@@ -213,20 +217,20 @@
     align-items: center;
 }
 
-.cell_active {
-    border: 3px solid #020C39;
-}
-
 .cell_chosen {
     background-color: #020C39;
     color: #FFFFFF;
 }
 
 .cell_star {
-    border: 3px solid #020C39;
+    border: 2px solid #020C39;
     background-color: #FFFFFF;
     color: #020C39;
     position: relative;
+}
+
+.cell_active {
+    border: 4px solid #020C39;
 }
 
 .cell_star::after {
@@ -237,7 +241,6 @@
     top: -13px;
     right: -13px;
 }
-
 
 .game__board {
     height: 290px;
@@ -263,7 +266,6 @@
     display: flex;
     justify-content: space-between;
 }
-
 
 .btn {
     width: 126px;

@@ -2,13 +2,17 @@
 
 const CELLS_NUMBER = 7;
 const STAR_CELLS_NUMBER = 2;
-const NOT_STAR_CELL_NUMBER = CELLS_NUMBER - STAR_CELLS_NUMBER;
+const MAX_STAR_VALUE = 11;
+const NOT_STAR_CELLS_NUMBER = CELLS_NUMBER - STAR_CELLS_NUMBER;
+const MAX_VALUE = 50;
 
 let numbers = [];
 
 const gameBoard = document.querySelector(".game__board");
 const playRowNumbers = document.querySelectorAll(".play-row_numbers > .cell");
 const container = document.querySelector('.container');
+
+const randomizer = (min, max) => Math.round(min + Math.random() * (max - min));
 
 function startGame() {
     document.querySelector(".game-play").style.display = "block";
@@ -49,6 +53,7 @@ function renderPlayRow() {
     for (let i = 0, j = 0; j < CELLS_NUMBER; i++, j++) {
         if (numbers[i]) {
             playRowNumbers[j].textContent = numbers[i];
+            playRowNumbers[i].classList.remove('cell_active');
             playRowNumbers[i].classList.add('cell_chosen');
         }
         else {
@@ -63,17 +68,17 @@ function renderPlayRow() {
 
 function renderBoard() {
     cleanGameBoard();
-    if (numbers.length < NOT_STAR_CELL_NUMBER) {
+    if (numbers.length < NOT_STAR_CELLS_NUMBER) {
         gameBoard.classList.remove('game__board_small');
         gameBoard.classList.add('game__board_big');
-        fullGameBoard(50);
+        fullGameBoard(MAX_VALUE);
         renderBoard_aux(numbers.slice(0, CELLS_NUMBER));
     }
     else {
         gameBoard.classList.remove('game__board_big');
         gameBoard.classList.add('game__board_small');
-        fullGameBoard(11);
-        renderBoard_aux(numbers.slice(NOT_STAR_CELL_NUMBER));
+        fullGameBoard(MAX_STAR_VALUE);
+        renderBoard_aux(numbers.slice(NOT_STAR_CELLS_NUMBER));
     }
 }
 
@@ -85,16 +90,31 @@ function renderBoard_aux(nums) {
 }
 
 function selectNumber(el) {
-    let n = el.textContent;
     if (!el.classList.contains('cell_chosen')) {
         if (numbers.length < CELLS_NUMBER) {
-            numbers.push(n);
+            numbers.push(el.textContent);
         }
     }
     else {
-        numbers.splice(numbers.indexOf(n), 1);
+        numbers.splice(numbers.lastIndexOf(el.textContent), 1);
     }
 }
+
+function addRandomNumbers(n, max) {
+    while (numbers.length < n) {
+        let num = randomizer(1, max).toString();
+        if (numbers.indexOf(num) === -1) {
+            numbers.push(num)
+        };
+    }
+}
+
+document.querySelector('#lucky-dip-button').addEventListener('click', function () {
+    resetGame();
+    addRandomNumbers(NOT_STAR_CELLS_NUMBER, MAX_VALUE);
+    addRandomNumbers(CELLS_NUMBER, MAX_STAR_VALUE);
+    updateGame();
+})
 
 gameBoard.addEventListener('click', function (event) {
     if (!event.target.classList.contains("cell")) return;
