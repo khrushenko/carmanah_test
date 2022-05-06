@@ -8,13 +8,26 @@ let numbers = [];
 
 const gameBoard = document.querySelector(".game__board");
 const playRowNumbers = document.querySelectorAll(".play-row_numbers > .cell");
+const container = document.querySelector('.container');
 
 function startGame() {
-    console.log("Start game");
-    document.querySelector(".home").style.display = "none";
     document.querySelector(".game-play").style.display = "block";
-    document.querySelector(".back-button").style.display = "block";
+    document.querySelector(".home").classList.add("disabledbutton");
+    container.scrollBy({
+        top: 0,
+        left: 700,
+        behavior: 'smooth'
+    });
     renderBoard();
+}
+
+function endGame() {
+    document.querySelector(".home").classList.remove("disabledbutton");
+    container.scrollBy({
+        top: 0,
+        left: -700,
+        behavior: 'smooth'
+    });
 }
 
 document.querySelector("#euro-millions-game").addEventListener("click", startGame);
@@ -40,8 +53,7 @@ function renderPlayRow() {
         }
         else {
             playRowNumbers[j].textContent = "";
-            playRowNumbers[j].classList.remove('cell_active');
-            playRowNumbers[i].classList.remove('cell_chosen');
+            playRowNumbers[j].classList.remove('cell_active', 'cell_chosen');
         }
     }
     if (numbers.length < CELLS_NUMBER) {
@@ -51,7 +63,6 @@ function renderPlayRow() {
 
 function renderBoard() {
     cleanGameBoard();
-    console.log("all numbers =", numbers);
     if (numbers.length < NOT_STAR_CELL_NUMBER) {
         gameBoard.classList.remove('game__board_small');
         gameBoard.classList.add('game__board_big');
@@ -68,10 +79,7 @@ function renderBoard() {
 
 function renderBoard_aux(nums) {
     let boardCells = gameBoard.querySelectorAll('.cell');
-    console.log(boardCells);
-    console.log("nums =", nums);
     for (let i of nums) {
-        console.log("cell", boardCells[i - 1]);
         boardCells[i - 1].classList.add('cell_chosen');
     }
 }
@@ -111,6 +119,7 @@ document.querySelector('#cancel-button').addEventListener('click', function (eve
 
 document.querySelector('#clear-button').addEventListener('click', resetGame);
 
-document.querySelector('#clear-button').addEventListener('click', function (event) {
+document.querySelector('#betslip-button').addEventListener('click', function (event) {
     resetGame();
+    endGame();
 })

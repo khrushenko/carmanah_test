@@ -16,11 +16,18 @@
     overflow: hidden;
 }
 
+.disabledbutton {
+    pointer-events: none;
+    opacity: 0.95;
+}
+
 /* HOME PAGE */
 
 .home {
     width: 100%;
-    /* box-shadow: 10px 0px 10px #888888; */
+    flex: none;
+    box-shadow: 5px 0px 25px #000000;
+    z-index: 1;
 }
 
 .title {
@@ -93,12 +100,24 @@
     position: relative;
 }
 
+.back-button {
+    display: none;
+    /* content: url('../images/Shap2.png'); */
+    position: absolute;
+    border-radius: 50%;
+    background-color: #020C39;
+    text-align: center;
+    height: 170px;
+    width: 170px;
+    top: calc(50% - 85px);
+    left: -140px;
+}
+
 .game {
     width: 700px;
     padding: 36px 34px 50px 55px;
     color: #FFFFFF;
 }
-
 
 .game__header {
     width: 100%;
@@ -221,25 +240,23 @@
 
 
 .game__board {
+    height: 290px;
     margin: 55px 0;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    flex-flow: row wrap;
     gap: 8px;
 }
 
 .game__board_big {
     width: 590px;
-    height: 290px;
+    justify-content: space-between;
 }
 
 .game__board_small {
     width: 350px;
-    height: 100px;
-    align-items: flex-end;
+    margin: 55px auto;
     justify-content: flex-start;
-    align-content: flex-end;
+    align-content: flex-start;
 }
 
 .game__nav {
@@ -260,13 +277,22 @@
     background-color: inherit;
 }
 
-.btn_big {
+.btn:hover {
+    opacity: 0.8;
+    outline: 2px solid #020C39;
+    color: #020C39;
+    background-color: rgb(255, 255, 255, 0.4);
+}
+
+.btn-bestlip {
     width: 225px;
     background-color: #020C39;
     color: #FFFFFF;
     outline: none;
+    margin: 0 15px;
 }
 
-.btn:hover {
-    opacity: 0.9;
+.btn-bestlip:hover {
+    background-color: rgb(2, 12, 57, 0.4);
+    color: #FFFFFF;
 }
